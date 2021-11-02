@@ -17,7 +17,19 @@
                 <div class="card mt-5">
                     <div class="card-body table-responsive">
                         <div class="mb-3">
-                            <a class="btn btn-primary shadow-sm" href="">Send Wishes</a>
+                            <a class="btn btn-primary shadow-sm" href="{{ route('send-wishes') }}">Send Wishes</a>
+
+                            @if (session()->has('error'))
+                            <div class="mt-3">
+                                <h5 class="text-center alert alert-danger"> {{ session()->get('error') }}</h5>
+                            </div>
+                            @endif
+
+                            @if (session()->has('success'))
+                            <div class="mt-3">
+                                <h5 class="text-center alert alert-success"> {{ session()->get('success') }}</h5>
+                            </div>
+                            @endif
                         </div>
                         @if (sizeof($todayWishList)> 0)
                         <table class="table table-striped">
@@ -37,7 +49,7 @@
                             @endforeach
                         </table>
                         @else
-                        <h4 class="text-center"> It's nobody's birthday today</h4>
+                        <h4 class="text-center"> No data :(</h4>
                         @endif
                     </div>
                 </div>
@@ -45,6 +57,14 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        if ($('.alert').length > 0) {
+            setTimeout(function() {
+                $('.alert').fadeOut();
+            }, 2000)
+        }
+    </script>
 </body>
 
 </html>

@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Welcome@index');
+Route::get('/send-wishes', 'Welcome@sendWishes')->name('send-wishes');

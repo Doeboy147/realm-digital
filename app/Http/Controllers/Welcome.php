@@ -25,10 +25,10 @@ class Welcome extends Controller
             }
             $this->sendEmail($message, 'email@domail.com');
         } else {
-            return redirect()->back()->with('error', 'birthday wish list is empty');
+            return redirect()->back()->with('error', 'Today birthday wish list is empty');
         }
 
-        return true;
+        return redirect()->back()->with('success', 'Birthday wishes sent successfully');
     }
 
     protected function birthDayWishList()
