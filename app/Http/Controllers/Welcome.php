@@ -21,7 +21,7 @@ class Welcome extends Controller
 
         if (empty($todayWishList) === false) {
             foreach ($todayWishList as $employee) {
-                if (!in_array($this->excludeEmployees(), $employee['id'], true)) {
+                if (!in_array($employee['id'],$this->excludeEmployees(), true)) {
                     $message .= $employee['name'] . ' ';
                 } else {
                     continue;
