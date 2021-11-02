@@ -21,7 +21,11 @@ class Welcome extends Controller
 
         if (empty($todayWishList) === false) {
             foreach ($todayWishList as $employee) {
-                $message .= $employee['name'] . ' ';
+                if (!in_array($this->excludeEmployees(), $employee['id'], true)) {
+                    $message .= $employee['name'] . ' ';
+                } else {
+                    continue;
+                }
             }
             $this->sendEmail($message, 'email@domail.com');
         } else {
